@@ -330,3 +330,19 @@ FlaskEcommerce proporciona una API RESTful para una tienda online completa con:
 - **ORM**: SQLAlchemy
 - **Base de datos**: SQL (probablemente PostgreSQL/MySQL)
 - **Autenticación**: JWT
+
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant ServidorWeb
+    participant BaseDeDatos
+
+    Usuario->>ServidorWeb: Enviar credenciales (usuario y contraseña)
+    ServidorWeb->>BaseDeDatos: Verificar credenciales en la base de datos
+    BaseDeDatos-->>ServidorWeb: Respuesta de verificación (éxito/fallo)
+    alt Credenciales válidas
+        ServidorWeb-->>Usuario: Inicio de sesión exitoso
+    else Credenciales inválidas
+        ServidorWeb-->>Usuario: Error de inicio de sesión
+    end
+```
